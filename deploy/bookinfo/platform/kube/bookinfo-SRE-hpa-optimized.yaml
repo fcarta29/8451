@@ -1,0 +1,143 @@
+##################################################################################################
+# Details HPA
+##################################################################################################
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: details-v1
+  namespace: bookinfo
+spec:
+  maxReplicas: 8
+  minReplicas: 2
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      targetAverageUtilization: 80
+  - type: Resource
+    resource:
+      name: memory
+      targetAverageUtilization: 80
+  scaleTargetRef:
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    name: details-v1
+---
+##################################################################################################
+# Ratings HPA
+##################################################################################################
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: ratings-v1
+  namespace: bookinfo
+spec:
+  maxReplicas: 3
+  minReplicas: 1
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      targetAverageUtilization: 80
+  - type: Resource
+    resource:
+      name: memory
+      targetAverageUtilization: 80
+  scaleTargetRef:
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    name: ratings-v1
+---
+##################################################################################################
+# Reviews service
+##################################################################################################
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: reviews-v1
+  namespace: bookinfo
+spec:
+  maxReplicas: 2
+  minReplicas: 1
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      targetAverageUtilization: 80
+  - type: Resource
+    resource:
+      name: memory
+      targetAverageUtilization: 80
+  scaleTargetRef:
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    name: reviews-v1
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: reviews-v2
+  namespace: bookinfo
+spec:
+  maxReplicas: 4
+  minReplicas: 2
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      targetAverageUtilization: 80
+  - type: Resource
+    resource:
+      name: memory
+      targetAverageUtilization: 80
+  scaleTargetRef:
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    name: reviews-v2
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: reviews-v3
+  namespace: bookinfo
+spec:
+  maxReplicas: 4
+  minReplicas: 2
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      targetAverageUtilization: 80
+  - type: Resource
+    resource:
+      name: memory
+      targetAverageUtilization: 80
+  scaleTargetRef:
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    name: reviews-v3
+---
+##################################################################################################
+# Productpage HPA
+##################################################################################################
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: productpage-v1
+  namespace: bookinfo
+spec:
+  maxReplicas: 32
+  minReplicas: 4
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      targetAverageUtilization: 80
+  - type: Resource
+    resource:
+      name: memory
+      targetAverageUtilization: 80
+  scaleTargetRef:
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    name: productpage-v1
